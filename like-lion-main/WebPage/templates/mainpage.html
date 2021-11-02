@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %} 메인페이지 입니다 {% endblock %}
+
+
+{% block content %}
+<br>
+<form action="{% url 'searchapp:search' %}" method="get">
+    <div class="input-group mb-3">
+    <span class="input-group-text" id="inputGroup-sizing-default">중소기업의 모든것</span>
+    <input type="text" for="search_key" placeholder="원하는 분야의 제조업체나 비슷한 제품을 검색해보세요" 
+    class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+    <input type="submit" value="검색" >
+    </div>
+</form>
+
+<img src="/static/image/main.jpg" alt="main text" width="1100" height="800"><br>
+
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %} 회사 리스트 출력 {% endblock %}
+
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Products</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+
+<body>
+
+<div>
+    <form action="{% url 'searchapp:search' %}" method="get">
+        <label for="search_key" >검색하기</label>
+        <input type="text" name="search_key" label="search_key"placeholder="원하는 분야의 제조업체나 비슷한 제품을 검색해보세요">
+        <input type="submit" >
+    </form>
+</div>
+
+    <!-- 사실 이건 검색결과가 아니고 전체 등록 업체 보기임 필터링해서 보여주는걸로 바꿔야함-->
+<h1> Companys </h1>
+    <div class="row">
+    {% for company in company_list_all %}
+    <div class="col">
+        <div class="card" style="width: 18rem;">
+            <img src="{{ company.company_image }}" class="card-img-top" alt="...">
+            <div class="card-body">
+                    <h5 class="card-title">{{ company.company_name }}</h5>
+                    <p class="card-text">CALL : +82{{ company.number }}</p>
+                    <p class="card-text">ORNER : {{ company.ceo_of_company }}</p>
+                    <a href="#" class="btn btn-primary">상세정보</a>
+            </div>
+        </div>
+    </div>        
+        {% endfor %}
+    </div>    
+</body>
+
+</html>
+{% endblock%}
+
